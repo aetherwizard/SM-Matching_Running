@@ -1,0 +1,787 @@
+% !TEX program = pdflatex
+\documentclass[coverpage]{qadi-article} % use [compact] for no separate cover
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\usepackage{amsthm}
+
+% ---------- PDF metadata ----------
+\hypersetup{
+  pdftitle={From APM to the Standard Model: Gauge Embedding, Running Couplings in QMU, and Anomaly Constraints},
+  pdfauthor={David W. Thomson III},
+  pdfsubject={Research article},
+  pdfkeywords={QMU, APM, chronovibration, distributed charge, metrology},
+  pdfcreator={LaTeX}
+}
+
+% ---------- Class variables (optional) ----------
+% \renewcommand{\QADIVersion}{v1.2}
+% \renewcommand{\QADIDate}{November 1, 2025}
+% \renewcommand{\QADIROR}{\href{https://ror.org/XXXXXXXXX}{https://ror.org/XXXXXXXXX}}
+
+\title{From APM to the Standard Model:\\
+Gauge Embedding, Running Couplings in QMU, and Anomaly Constraints}
+\author{\QADIAuthor{David W.~Thomson III}{0000-0002-5830-5427}}
+\date{November 1, 2025}
+
+% Theorems (kernel \newtheorem is sufficient; avoid \theoremstyle)
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+\QADIMakeTitle
+
+\begin{abstract}
+We derive a QMU–native matching between the dual APM gauge structure $U(1)_{es}\times U(1)_{mag}$ and the electroweak sector. The hypercharge direction is realized as
+\[
+Y=\eta_{es}Q_{es}+\eta_{mag}Q_{mag},
+\qquad
+\frac{\Au}{\kC}=16\pi^{2},
+\]
+with the orthogonal abelian $X$ surviving as a massive direction after symmetry breaking. From QMU stiffness we obtain
+\[
+g_{es}^{2}=\kC,\quad g_{mag}^{2}=\Au,\quad
+g_Y^{-2}=\frac{\cos^{2}\theta}{g_{es}^{2}}+\frac{\sin^{2}\theta}{g_{mag}^{2}},
+\quad
+g_\gamma^{-2}=g_2^{-2}+g_Y^{-2},
+\]
+and organize thresholds via loxodromic portals that respect (or quantify departures from) the ledger anchor $\Au\,\curlapm=\Fq^{2}\lC^{2}$. We present one-loop QMU running, an optional abelian kinetic-mixing treatment, and a minimal fit scaffold in terms of $(\theta,\Delta_i^{\rm(th)})$. Anomaly cancellation is proven for a family-universal embedding
+\[
+Q_{\mathrm{APM}}=a\,Y+b\,(B\!-\!L),
+\]
+with right-handed neutrinos ensuring the $B\!-\!L$ leg is anomaly-free. We close by listing QMU-expressed observables—$\alphafs(\mu)$, $\sin^{2}\theta_{W}(\mu)$, dipole moments, and EW precision sets—that directly constrain $(\theta,\delta b_i,\varepsilon)$ without recourse to SI in the main text.
+\end{abstract}
+
+\QADIKeywords{QMU; APM; chronovibration; distributed charge; metrology}
+
+\numberwithin{equation}{section}
+
+% -------------------------
+\section{Introduction}
+Institutional attribution follows the QADI reference identity~\cite{QADI_Community_DOI}. We work strictly in QMU, using the base set \(\{\me,\lC,\Fq,\eesq,\eemaxsq\}\) and aether constants \(\Au,\kC\), with the stiffness ratio \(\Au/\kC=\AGCratio\) as normalization. No SI units appear in the main text.
+
+% -------------------------
+\section{Matching Setup: Gauge Hierarchy and Normalization}\label{sec:setup}
+
+APM posits a dual $U(1)_{es}\times U(1)_{mag}$ gauge structure at the quantum frequency scale $\mu_{0}\sim \Fq$.
+The gauge fields are
+\[
+A^{es}_{\mu}\qquad\text{and}\qquad A^{mag}_{\mu},
+\]
+with kinetic terms normalized in QMU by
+\begin{equation}
+\mathcal{L}_{\rm kin}
+= -\frac{1}{4\kC}\,F^{es}_{\mu\nu}F^{es\,\mu\nu}
+  -\frac{1}{4\Au}\,F^{mag}_{\mu\nu}F^{mag\,\mu\nu}.
+\end{equation}
+The ratio of stiffness coefficients is fixed in QMU:
+\begin{equation}
+\frac{\Au}{\kC}=16\pi^{2}.
+\label{eq:normalization}
+\end{equation}
+
+\subsection{UV Matching}
+Before electroweak breaking, Standard Model gauge symmetry is
+\[
+SU(3)_{c}\times SU(2)_{L}\times U(1)_{Y}.
+\]
+We identify the hypercharge direction as a linear embedding of APM charges:
+\begin{equation}
+Y = \eta_{es}\,Q_{es}+\eta_{mag}\,Q_{mag}
+\label{eq:Yembedding}
+\end{equation}
+with coefficients to be fixed by anomaly cancellation (Sec.~\ref{sec:anomalies}).
+
+The orthogonal linear combination
+\begin{equation}
+X = -\eta_{mag}\,Q_{es}+\eta_{es}\,Q_{mag}
+\label{eq:Xembedding}
+\end{equation}
+remains gauge-distinct in the UV and is associated with a massive boson after symmetry breaking. The mass scale of $X$ receives threshold contributions from loxodromic-excitation modes at $\Fq$.
+
+\subsection{Electroweak Symmetry Breaking}
+After the Higgs acquires vacuum alignment,
+\[
+SU(2)_{L}\times U(1)_{Y}\;\longrightarrow\; U(1)_{\rm em},
+\]
+the usual weak mixing angle $\theta_{W}$ defines
+\[
+\begin{pmatrix} A_\mu \\ Z_\mu \end{pmatrix}
+=
+\begin{pmatrix}
+\cos\theta_{W} & \sin\theta_{W}\\
+-\sin\theta_{W} & \cos\theta_{W}
+\end{pmatrix}
+\begin{pmatrix} B_\mu \\ W^{3}_\mu \end{pmatrix}.
+\]
+
+At this stage, we introduce the APM mixing angle $\theta$ relating $(A^{es},A^{mag})$ to the hypercharge direction:
+\begin{equation}
+\begin{pmatrix} B_\mu \\ X_\mu \end{pmatrix}
+=
+\begin{pmatrix}
+\cos\theta & \sin\theta\\
+-\sin\theta & \cos\theta
+\end{pmatrix}
+\begin{pmatrix} A^{es}_\mu \\ A^{mag}_\mu \end{pmatrix}.
+\label{eq:APMmixer}
+\end{equation}
+
+\subsection{Photon and \texorpdfstring{$Z$}{Z} in QMU}
+Combining \eqref{eq:Yembedding}–\eqref{eq:APMmixer} with the electroweak rotation yields the physical fields:
+\begin{equation}
+\begin{pmatrix} A_\mu \\ Z_\mu \\ X_\mu \end{pmatrix}
+=
+\mathbf{R}(\theta_{W},\theta)
+\begin{pmatrix} A^{es}_\mu \\ A^{mag}_\mu \\ W^{3}_\mu \end{pmatrix},
+\end{equation}
+where $\mathbf{R}$ is an orthogonal mixing matrix with entries fixed entirely by $(\theta_{W}, \theta, \eta_{es},\eta_{mag})$ and the normalization identity \eqref{eq:normalization}.
+
+The electromagnetic symmetry $U(1)_{\rm em}$ is therefore embedded in APM as the unique massless direction preserved simultaneously by:
+\begin{itemize}
+\item the hypercharge embedding \eqref{eq:Yembedding},
+\item the electroweak Higgs alignment,
+\item the QMU stiffness normalization \eqref{eq:normalization}.
+\end{itemize}
+
+This structure ensures that the photon inherits a definite dual-charge mixture from the Aether.
+
+% -------------------------
+\section{Coupling Relations and Thresholds}\label{sec:thresholds}
+
+\subsection{QMU gauge couplings from stiffness}
+APM normalizes the abelian kinetic terms by
+\begin{equation}
+\mathcal{L}_{\rm kin}
+= -\frac{1}{4\kC}\,F^{es}_{\mu\nu}F^{es\,\mu\nu}
+  -\frac{1}{4\Au}\,F^{mag}_{\mu\nu}F^{mag\,\mu\nu},
+\qquad
+\frac{\Au}{\kC}=16\pi^{2}.
+\label{eq:QMUstiffness}
+\end{equation}
+We therefore identify the dimensionless QMU couplings
+\begin{equation}
+g_{es}^{2}\equiv \kC,
+\qquad
+g_{mag}^{2}\equiv \Au,
+\qquad
+\frac{g_{mag}}{g_{es}}=4\pi.
+\label{eq:QMUcouplings}
+\end{equation}
+Let the APM mixing angle \(\theta\) (defined in \eqref{eq:APMmixer}) rotate \((A^{es}_\mu,A^{mag}_\mu)\) into the hypercharge direction \(B_\mu\) and its orthogonal boson \(X_\mu\).
+Projecting the diagonal kinetic form onto the \(B\) and \(X\) axes yields the effective abelian couplings:
+\begin{align}
+\frac{1}{g_{Y}^{2}} &= \frac{\cos^{2}\theta}{g_{es}^{2}}+\frac{\sin^{2}\theta}{g_{mag}^{2}},
+&
+\frac{1}{g_{X}^{2}} &= \frac{\sin^{2}\theta}{g_{es}^{2}}+\frac{\cos^{2}\theta}{g_{mag}^{2}},
+\label{eq:GYGX}
+\end{align}
+with the mixed term vanishing by orthogonality.
+
+\subsection{Electroweak relations at \texorpdfstring{$\mu_{0}\sim\Fq$}{mu0\~Fq}}
+At the matching scale \(\mu_{0}\sim\Fq\) (QMU ledger scale), the nonabelian \(SU(2)_{L}\) coupling is denoted \(g_{2}(\mu_{0})\).
+Standard electroweak geometry then gives the \emph{photon} and \emph{$Z$} couplings purely algebraically from \((g_{2},g_{Y})\):
+\begin{align}
+\frac{1}{g_{\gamma}^{2}} &= \frac{1}{g_{2}^{2}}+\frac{1}{g_{Y}^{2}},
+\label{eq:photon-projector}\\
+g_{Z}^{2} &= g_{2}^{2}+g_{Y}^{2}.
+\label{eq:Z-combo}
+\end{align}
+Combining \eqref{eq:GYGX} with \eqref{eq:photon-projector}–\eqref{eq:Z-combo} gives the fully reduced QMU expressions
+\begin{align}
+\frac{1}{g_{\gamma}^{2}}(\mu_{0})
+&= \frac{1}{g_{2}^{2}(\mu_{0})}
+  +\frac{\cos^{2}\theta}{g_{es}^{2}}+\frac{\sin^{2}\theta}{g_{mag}^{2}},
+\label{eq:ggamma-full}\\
+g_{Z}^{2}(\mu_{0})
+&= g_{2}^{2}(\mu_{0})
+  +\left(\frac{\cos^{2}\theta}{g_{es}^{2}}+\frac{\sin^{2}\theta}{g_{mag}^{2}}\right)^{-1}.
+\label{eq:gZ-full}
+\end{align}
+In terms of the fine-structure parameter \(\alphafs(\mu)\) (dimensionless and QMU-compatible),
+\begin{equation}
+\alphafs^{-1}(\mu_{0})
+= \frac{4\pi}{g_{\gamma}^{2}(\mu_{0})}
+=4\pi\!\left[
+\frac{1}{g_{2}^{2}(\mu_{0})}
++\frac{\cos^{2}\theta}{\kC}
++\frac{\sin^{2}\theta}{\Au}
+\right].
+\label{eq:alphaQMU}
+\end{equation}
+
+\paragraph{Checks and limiting cases.}
+Using \eqref{eq:QMUcouplings}:
+\begin{align}
+\theta=0:\quad
+&g_{Y}^{-2}=\kC^{-1},\quad
+\alphafs^{-1}=4\pi\!\left[\;g_{2}^{-2}(\mu_{0})+\kC^{-1}\right],\\
+\theta=\frac{\pi}{2}:\quad
+&g_{Y}^{-2}=\Au^{-1},\quad
+\alphafs^{-1}=4\pi\!\left[\;g_{2}^{-2}(\mu_{0})+\Au^{-1}\right].
+\end{align}
+Since \(\Au/\kC=16\pi^{2}\), small \(\theta\) perturbs \(g_{Y}^{-2}\) by a controlled fraction \(\sim \theta^{2}(\Au^{-1}-\kC^{-1})\).
+
+\subsection{Threshold structure at \texorpdfstring{$\mu_{0}$}{mu0}: loxodromic portals}
+Heavy loxodromic excitations with APM charge assignments contribute additive, positive or negative shifts to the inverse-squared couplings at \(\mu_{0}\):
+\begin{equation}
+\left.\frac{1}{g_{i}^{2}}\right|_{\mu_{0}^{-}}
+=
+\left.\frac{1}{g_{i}^{2}}\right|_{\mu_{0}^{+}}
+-\Delta_{i}^{\rm(th)},
+\qquad
+\Delta_{i}^{\rm(th)}
+=\sum_{\Xi}\frac{\mathcal{T}_{i}(\Xi)}{8\pi^{2}}
+\ln\!\frac{M_{\Xi}}{\mu_{0}},
+\label{eq:thresholds}
+\end{equation}
+where \(i\in\{Y,2,3,X\}\), \(\Xi\) runs over integrated-out fields, and \(\mathcal{T}_{i}(\Xi)\) is the quadratic index under the corresponding gauge factor (zero for singlets). In the APM/QMU dictionary, the portal spectrum masses \(M_{\Xi}\) are controlled by holonomy and curl invariants; a convenient parametrization is
+\begin{equation}
+\begin{split}
+\ln\!\frac{M_{\Xi}}{\mu_{0}}
+&= \beta_{\Xi}\,\ln\!\left(\frac{\Au\,\curlapm}{\Fq^{2}\lC^{2}}\right)
+= \beta_{\Xi}\,\ln 1\\[4pt]
+&\Rightarrow\quad \beta_{\Xi}\ \text{measures deviation from the ledger identity } 
+\Au\,\curlapm=\Fq^{2}\lC^{2}.
+\end{split}
+\label{eq:ledger-th}
+\end{equation}
+The exact \(\beta_{\Xi}=0\) limit saturates the ledger identity and leaves \(\Delta_{i}^{\rm(th)}\) purely representation-counting; nonzero \(\beta_{\Xi}\) coherently encodes chronovibrational strain of the thresholds.
+
+\subsection{Minimal benchmark for fits}
+For phenomenology we will use
+\begin{equation}
+\Big\{\,\theta,\ g_{2}(\mu_{0}),\ \{\Delta_{i}^{\rm(th)}\}\Big\}
+\quad\text{as primary parameters at}\quad \mu_{0}\sim\Fq,
+\label{eq:fit-primaries}
+\end{equation}
+with derived quantities \(\{g_{Y},g_{\gamma},g_{Z},g_{X}\}\) from \eqref{eq:GYGX}–\eqref{eq:gZ-full}. These seed the one-loop QMU running in Sec.~\ref{sec:running}:
+\[
+\mu\,\frac{d}{d\mu}\!\left(\frac{1}{g_{i}^{2}}\right)
+= -\frac{b_{i}}{8\pi^{2}}-\frac{\delta b_{i}}{8\pi^{2}},
+\]
+where \(\delta b_{i}\) are the chronovibrational portal shifts induced by the same spectrum that generated \(\Delta_{i}^{\rm(th)}\) in \eqref{eq:thresholds}. This ensures consistency between matching and running.
+
+% -------------------------
+\section{Running in QMU}\label{sec:running}
+
+\subsection{Setup, scheme, and variables}
+We evolve couplings from the matching scale $\mu_{0}\sim\Fq$ using one–loop RGEs in QMU.  Define
+\[
+t\;\equiv\;\ln\!\frac{\mu}{\mu_{0}},
+\qquad
+i\in\{3,2,Y,X\},
+\]
+with $SU(3)_{c}$, $SU(2)_{L}$, hypercharge $U(1)_{Y}$, and the orthogonal APM abelian factor $U(1)_{X}$ (Sec.~\ref{sec:setup}). Thresholds at $\mu_{0}$ are already absorbed into $g_{i}(\mu_{0})$ via the $\Delta_{i}^{\rm(th)}$ of Sec.~\ref{sec:thresholds}.
+
+For compactness we use the inverse couplings,
+\begin{equation}
+\mathcal{G}_{i}(t)\;\equiv\;\frac{1}{g_{i}^{2}(\mu)}.
+\end{equation}
+At one loop the nonabelian and diagonal abelian runnings are
+\begin{equation}
+\frac{d\mathcal{G}_{i}}{dt}
+= -\frac{b_{i}}{8\pi^{2}}-\frac{\delta b_{i}}{8\pi^{2}},
+\qquad
+i\in\{3,2,Y,X\},
+\label{eq:RGEscalar}
+\end{equation}
+where $b_{i}$ are the Standard-Model one–loop coefficients (with the matter content active between $\mu$ and $\mu_{0}$), and $\delta b_{i}$ encode APM portal contributions from the same spectrum responsible for the matching thresholds.\footnote{This enforces matching–running consistency: fields that generate $\Delta_{i}^{\rm(th)}$ at $\mu_{0}$ also shift the slopes by $\delta b_{i}$ below their masses.}
+
+\subsection{Optional abelian kinetic mixing}
+Even if the abelian fields are diagonal at $\mu_{0}$, loops can regenerate off-diagonal kinetic terms. Introduce a mixing parameter $\varepsilon(\mu)$ via the inverse–coupling matrix
+\begin{equation}
+\mathbf{\mathcal{G}}(t)\;=\;
+\begin{pmatrix}
+\mathcal{G}_{Y}(t) & \varepsilon(t) \\
+\varepsilon(t) & \mathcal{G}_{X}(t)
+\end{pmatrix},
+\qquad
+\mathbf{\mathcal{G}}(0)=
+\begin{pmatrix}
+\mathcal{G}_{Y}(0) & 0\\
+0 & \mathcal{G}_{X}(0)
+\end{pmatrix}.
+\end{equation}
+Its RGE is
+\begin{equation}
+\frac{d}{dt}\,\mathbf{\mathcal{G}}(t)
+= -\frac{1}{8\pi^{2}}
+\begin{pmatrix}
+b_{Y}+\delta b_{Y} & \; \delta b_{YX} \\
+\delta b_{YX} & b_{X}+\delta b_{X}
+\end{pmatrix}.
+\label{eq:RGE-matrix}
+\end{equation}
+The off-diagonal entry $\delta b_{YX}$ is nonzero only if some portal fields carry \emph{both} $Y$ and $X$ charges. For phenomenology, two regimes suffice:
+\begin{align}
+\textbf{No shared charges:}&\quad \delta b_{YX}=0 \ \Rightarrow\ \varepsilon(t)\equiv 0 \ \text{for all }t.\\
+\textbf{Small shared charges:}&\quad |\delta b_{YX}|\ll |b_{Y,X}|\ \Rightarrow\ 
+\varepsilon(t)= -\frac{\delta b_{YX}}{8\pi^{2}}\,t + \mathcal{O}(\delta b_{YX}^{2}).
+\end{align}
+
+\subsection{Closed–form solutions (one loop)}
+Solving \eqref{eq:RGEscalar} gives
+\begin{equation}
+\mathcal{G}_{i}(t)=\mathcal{G}_{i}(0)-\frac{b_{i}+\delta b_{i}}{8\pi^{2}}\,t,
+\qquad
+i\in\{3,2,Y,X\},
+\label{eq:Gi-solution}
+\end{equation}
+and, when needed, from \eqref{eq:RGE-matrix}
+\begin{equation}
+\varepsilon(t) = -\frac{\delta b_{YX}}{8\pi^{2}}\,t
+\quad\text{(to leading order).}
+\label{eq:eps-solution}
+\end{equation}
+
+\paragraph{Electroweak projectors (global labels).}
+Using the tree-level electroweak geometry,
+\begin{align}
+\mathcal{G}_{\gamma}(t) &= \frac{1}{g_{\gamma}^{2}(\mu)}
+= \mathcal{G}_{2}(t)+\mathcal{G}_{Y}(t),
+\label{eq:Ggamma}\\
+g_{Z}^{2}(\mu) &= g_{2}^{2}(\mu)+g_{Y}^{2}(\mu),
+\label{eq:gZrunning}
+\end{align}
+and therefore the weak angle is
+\begin{equation}
+\sin^{2}\theta_{W}(\mu)
+=\frac{g_{Y}^{2}(\mu)}{g_{2}^{2}(\mu)+g_{Y}^{2}(\mu)}
+=\frac{1}{1+\mathcal{G}_{Y}(\mu)/\mathcal{G}_{2}(\mu)}.
+\label{eq:sin2W}
+\end{equation}
+
+\subsection{One-loop coefficients: baseline and APM shifts}
+
+\paragraph{Sign convention.}
+We adopt
+\[
+\beta(g_i)\;=\;\frac{b_i}{16\pi^{2}}\,g_i^{3}
+\qquad\Longleftrightarrow\qquad
+\frac{d}{dt}\!\left(\frac{1}{g_i^{2}}\right)
+= -\frac{b_i}{8\pi^{2}},
+\]
+so that asymptotic freedom corresponds to $b_i<0$. The portal-induced deformations are encoded as $b_i\to b_i+\delta b_i$ and, for the abelian pair, an off-diagonal term $\delta b_{YX}$ as in~\eqref{eq:RGE-matrix}.
+
+\begin{table}[htbp]
+\centering
+\caption{Baseline one-loop $b_i$ and symbolic APM portal shifts.}
+\label{tab:bi-dbi}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{}lccccX@{}}
+\toprule
+Gauge factor $i$ & $U(1)_Y$ & $SU(2)_L$ & $SU(3)_c$ & $U(1)_X$ & Notes \\
+\midrule
+Baseline $b_i$ &
+$\frac{41}{6}$ &
+$-\frac{19}{6}$ &
+$-7$ &
+$0$ &
+Standard Model matter content. \\
+
+Portal shift $\delta b_i$ &
+$\sum_{\Xi} q_{Y}^{2}(\Xi)\,n_{\Xi}$ &
+$\sum_{\Xi} T_{2}(\Xi)\,n_{\Xi}$ &
+$\sum_{\Xi} T_{3}(\Xi)\,n_{\Xi}$ &
+$\sum_{\Xi} q_{X}^{2}(\Xi)\,n_{\Xi}$ &
+$\Xi$ runs over loxodromic portals. \\
+
+Off-diagonal $\delta b_{YX}$ &
+\multicolumn{5}{c}{$\delta b_{YX}=\sum_{\Xi} q_{Y}(\Xi)\,q_{X}(\Xi)\,n_{\Xi}$\quad(only if $\Xi$ carries both $Y$ and $X$)}\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsubsection*{Worked example: loxodromic $SU(2)$ doublet portal}
+
+Consider one Dirac fermion portal $\Xi_D$ transforming as $(\mathbf{1},\mathbf{2})$ under $SU(3)_c\times SU(2)_L$ with APM–embedded abelian charges
+\begin{equation}
+q_Y(\Xi_D)=\eta_{es}\,Q_{es}(\Xi_D)+\eta_{mag}\,Q_{mag}(\Xi_D),\qquad
+q_X(\Xi_D)=-\eta_{mag}\,Q_{es}(\Xi_D)+\eta_{es}\,Q_{mag}(\Xi_D),
+\label{eq:example-qYqX}
+\end{equation}
+where $Q_{es},Q_{mag}$ are the QMU charges assigned by the APM ledger (family-universal if desired).
+Using the one–loop coefficients for a \emph{Dirac fermion} (two Weyl) in representation $R$,
+\[
+\delta b_i = \frac{4}{3}\,T_i(R)\quad (i=2,3),\qquad
+\delta b_{U(1)}=\frac{4}{3}\,q^2,\qquad
+\delta b_{YX}=\frac{4}{3}\,q_Y q_X,
+\]
+and $T_2(\mathbf{2})=\tfrac12$, $T_3(\mathbf{1})=0$, we obtain
+\begin{align}
+\delta b_{2}(\Xi_D) &= \frac{4}{3}\,T_2(\mathbf{2})=\frac{2}{3}, &
+\delta b_{3}(\Xi_D) &= 0, \\
+\delta b_{Y}(\Xi_D) &= \frac{4}{3}\,q_{Y}^{2}(\Xi_D), &
+\delta b_{X}(\Xi_D) &= \frac{4}{3}\,q_{X}^{2}(\Xi_D), \\
+\delta b_{YX}(\Xi_D) &= \frac{4}{3}\,q_{Y}(\Xi_D)\,q_{X}(\Xi_D).
+\end{align}
+If there are $N$ such doublets (including holonomy/degeneracy factors in the APM spectrum), multiply all entries by $N$.
+
+\paragraph{Scalar variant.}
+For a \emph{complex scalar} doublet portal $\Xi_S\sim(\mathbf{1},\mathbf{2})$,
+\[
+\delta b_i = \frac{1}{3}\,T_i(R),\qquad
+\delta b_{U(1)}=\frac{1}{3}\,q^2,\qquad
+\delta b_{YX}=\frac{1}{3}\,q_Y q_X,
+\]
+so
+\begin{align}
+\delta b_{2}(\Xi_S) &= \frac{1}{3}\,T_2(\mathbf{2})=\frac{1}{6}, &
+\delta b_{3}(\Xi_S) &= 0, \\
+\delta b_{Y}(\Xi_S) &= \frac{1}{3}\,q_{Y}^{2}(\Xi_S), &
+\delta b_{X}(\Xi_S) &= \frac{1}{3}\,q_{X}^{2}(\Xi_S), \\
+\delta b_{YX}(\Xi_S) &= \frac{1}{3}\,q_{Y}(\Xi_S)\,q_{X}(\Xi_S).
+\end{align}
+
+\paragraph{Folding into Table~\ref{tab:bi-dbi}.}
+If we define the shorthand multiplicity factor $n_{\Xi}$ \emph{to already include} the spin/statistics coefficient ($\tfrac{4}{3}$ for Dirac fermions, $\tfrac{1}{3}$ for complex scalars) and any degeneracy,
+then the table’s symbolic entries
+\[
+\begin{aligned}
+\delta b_{2} &= \sum_{\Xi} T_{2}(\Xi)\,n_{\Xi},\qquad
+\delta b_{3} = \sum_{\Xi} T_{3}(\Xi)\,n_{\Xi},\\[4pt]
+\delta b_{Y} &= \sum_{\Xi} q_{Y}^{2}(\Xi)\,n_{\Xi},\qquad
+\delta b_{X} = \sum_{\Xi} q_{X}^{2}(\Xi)\,n_{\Xi},\qquad
+\delta b_{YX} = \sum_{\Xi} q_{Y}(\Xi)q_{X}(\Xi)\,n_{\Xi}.
+\end{aligned}
+\]
+reproduce the explicit results above for each portal species $\Xi$.
+
+\begin{table}[htbp]
+\centering
+\caption{Representative loxodromic portal multiplets and their one-loop contributions. The shorthand $n_{\Xi}$ \emph{includes} spin/statistics factors ($\tfrac{4}{3}$ for Dirac fermions, $\tfrac{1}{3}$ for complex scalars) and any degeneracy. Charges $q_Y,q_X$ follow the embedding $Y=\eta_{es}Q_{es}+\eta_{mag}Q_{mag}$ and $X=-\eta_{mag}Q_{es}+\eta_{es}Q_{mag}$.}
+\label{tab:portal-examples}
+\renewcommand{\arraystretch}{1.12}
+\small
+\begin{tabularx}{\textwidth}{@{}l l c c c X@{}}
+\toprule
+Portal $\Xi$ & Spin & $T_{2}$ & $T_{3}$ & $n_{\Xi}$ & One-loop shifts (add to $b_i$ or off-diagonal) \\
+\midrule
+Dirac doublet $(\mathbf{1},\mathbf{2})$ & fermion & $\tfrac12$ & $0$ & absorbs $\tfrac{4}{3}$ & 
+$\displaystyle \delta b_{2}=T_{2}\,n_{\Xi}$,\ \ $\delta b_{3}=0$,\ \ $\delta b_{Y}=q_Y^{2}\,n_{\Xi}$,\ \ $\delta b_{X}=q_X^{2}\,n_{\Xi}$,\ \ $\delta b_{YX}=q_Y q_X\,n_{\Xi}$ \\[4pt]
+
+Complex triplet $(\mathbf{1},\mathbf{3})$ & scalar & $2$ & $0$ & absorbs $\tfrac{1}{3}$ &
+$\displaystyle \delta b_{2}=T_{2}\,n_{\Xi}$,\ \ $\delta b_{3}=0$,\ \ $\delta b_{Y}=q_Y^{2}\,n_{\Xi}$,\ \ $\delta b_{X}=q_X^{2}\,n_{\Xi}$,\ \ $\delta b_{YX}=q_Y q_X\,n_{\Xi}$ \\[4pt]
+
+Dirac color triplet $(\mathbf{3},\mathbf{1})$ & fermion & $0$ & $\tfrac12$ & absorbs $\tfrac{4}{3}$ &
+$\displaystyle \delta b_{2}=0$,\ \ $\delta b_{3}=T_{3}\,n_{\Xi}$,\ \ $\delta b_{Y}=q_Y^{2}\,n_{\Xi}$,\ \ $\delta b_{X}=q_X^{2}\,n_{\Xi}$,\ \ $\delta b_{YX}=q_Y q_X\,n_{\Xi}$ \\[2pt]
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\medskip
+Here $T_{2},T_{3}$ are the quadratic indices for $SU(2)_{L}$ and $SU(3)_{c}$ representations, $q_{Y},q_{X}$ are the abelian charges fixed by the embedding~\eqref{eq:Yembedding}–\eqref{eq:Xembedding}, and $n_{\Xi}$ counts degrees of freedom (including multiplicities). The ledger-locked band~\eqref{eq:sumrule} corresponds to choosing portal content with $\delta b_{2}+\delta b_{Y}=0$, while $\delta b_{3}$ and $\delta b_{X}$ remain free to probe color and $X$ sectors independently.
+
+\paragraph{Derived electroweak quantities.}
+Define the photon and $Z$ combinations (tree-level electroweak geometry):
+\begin{align}
+\mathcal{G}_{\gamma}(t) &= \frac{1}{g_{\gamma}^{2}(\mu)}
+= \mathcal{G}_{2}(t)+\mathcal{G}_{Y}(t),
+\label{eq:Ggamma-recall}\\
+g_{Z}^{2}(\mu) &= g_{2}^{2}(\mu)+g_{Y}^{2}(\mu).
+\end{align}
+The weak–angle in QMU is then
+\begin{equation}
+\sin^{2}\theta_{W}(\mu)
+=\frac{g_{Y}^{2}(\mu)}{g_{2}^{2}(\mu)+g_{Y}^{2}(\mu)}
+=\frac{1}{1+\mathcal{G}_{Y}(\mu)/\mathcal{G}_{2}(\mu)}.
+\label{eq:sin2W-recall}
+\end{equation}
+Differentiating \eqref{eq:sin2W-recall} with \eqref{eq:Gi-solution} gives its slope entirely from $(b_{2}+\delta b_{2})$ and $(b_{Y}+\delta b_{Y})$.
+
+\subsection{Ledger-locked sum rule and stability bands}
+The APM ledger identity
+\begin{equation}
+\Au\,\curlapm = \Fq^{2}\lC^{2}
+\label{eq:ledger}
+\end{equation}
+is dimensionless in QMU and defines a natural \emph{RG anchor}. If portal spectra respect \eqref{eq:ledger} at matching (Sec.~\ref{sec:thresholds}), then a minimal, symmetric assignment
+\begin{equation}
+\delta b_{Y} : \delta b_{2} : \delta b_{3}
+\;=\; \mathfrak{y} : \mathfrak{w} : \mathfrak{c},
+\qquad
+\mathfrak{y}+\mathfrak{w}+\mathfrak{c}=0,
+\label{eq:sumrule}
+\end{equation}
+preserves $\mathcal{G}_{\gamma}(t)$ flat to first order in portal shifts:
+\[
+\frac{d\mathcal{G}_{\gamma}}{dt}
+= -\frac{1}{8\pi^{2}}\big[(b_{2}+b_{Y})+(\delta b_{2}+\delta b_{Y})\big],
+\]
+so choosing $\delta b_{2}+\delta b_{Y}=0$ keeps the photon slope SM-like while allowing nontrivial deformations in $\{g_{2},g_{Y}\}$ individually. This “ledger-locked” band isolates clean constraints from $\alpha(\mu)$ while leaving sensitivity in $\sin^{2}\theta_{W}(\mu)$ and $g_{Z}(\mu)$.
+
+\subsection{Piecewise running with intermediate thresholds}
+If an intermediate portal mass $M$ lies between $\mu$ and $\mu_{0}$, use piecewise slopes:
+\[
+\mathcal{G}_{i}(\mu)=
+\begin{cases}
+\mathcal{G}_{i}(\mu_{0}) - \dfrac{b_{i}+\delta b_{i}^{\,(>M)}}{8\pi^{2}}\ln\!\dfrac{M}{\mu_{0}}
+\;\;-\dfrac{b_{i}+\delta b_{i}^{\,(<M)}}{8\pi^{2}}\ln\!\dfrac{\mu}{M}, \\
+\hfill \text{if }\mu<M<\mu_{0},\\[8pt]
+\mathcal{G}_{i}(\mu_{0}) - \dfrac{b_{i}+\delta b_{i}^{\,(>M)}}{8\pi^{2}}\ln\!\dfrac{\mu}{\mu_{0}},
+\quad \text{if } M<\mu \le \mu_{0}.
+\end{cases}
+\]
+Here $\delta b_{i}^{\,(>M)}$ includes that field; $\delta b_{i}^{\,(<M)}$ does not.
+
+\subsection{Sensitivity to the APM mixing angle}
+Using \eqref{eq:GYGX} at $t=0$,
+\[
+\mathcal{G}_{Y}(0)=\frac{\cos^{2}\theta}{g_{es}^{2}}+\frac{\sin^{2}\theta}{g_{mag}^{2}},
+\]
+so small variations $\theta\!\to\!\theta+\delta\theta$ induce
+\begin{equation}
+\delta \mathcal{G}_{Y}(0)
+=\left(\frac{1}{g_{mag}^{2}}-\frac{1}{g_{es}^{2}}\right)\sin(2\theta)\,\delta\theta
+=\left(\frac{1}{\Au}-\frac{1}{\kC}\right)\sin(2\theta)\,\delta\theta.
+\label{eq:theta-variation}
+\end{equation}
+This propagates to $\mathcal{G}_{\gamma}(t)$ and $\sin^{2}\theta_{W}(t)$ via \eqref{eq:Ggamma}–\eqref{eq:sin2W}. Since $\Au/\kC=16\pi^{2}$, $\Au^{-1}\ll \kC^{-1}$, so $\partial \mathcal{G}_{Y}/\partial\theta$ is maximal near $\theta\simeq\pi/4$ and suppressed near the endpoints.
+
+\subsection{Minimal fit pipeline (QMU-only)}
+For data anchors expressed without SI conversion:
+\begin{enumerate}
+\item Fix $\mu_{0}=\Fq$ and set priors on $(\theta,\Delta_{i}^{\rm(th)})$ (Sec.~\ref{sec:thresholds}).
+\item Compute $g_{Y,X}(\mu_{0})$ from \eqref{eq:GYGX}, then $g_{\gamma},g_{Z}$ via \eqref{eq:Ggamma}–\eqref{eq:gZrunning}.
+\item Evolve to each observable’s $\mu$ with \eqref{eq:Gi-solution}–\eqref{eq:eps-solution}, imposing piecewise decoupling when needed.
+\item Compare to QMU-expressed anchors: running $\alphafs(\mu)$, parity-violating $ee$ scattering (QMU weak angle), $(g-2)_{e,\mu}$ dipole form factors, and atomic-structure fine-splittings tabulated in QMU ledgers.
+\end{enumerate}
+
+\paragraph{Summary.}
+Equations \eqref{eq:Gi-solution}–\eqref{eq:eps-solution} furnish closed-form one-loop evolution in QMU. The ledger-locked sum rule \eqref{eq:sumrule} isolates clean tests in $\sin^{2}\theta_{W}(\mu)$ while keeping $\alphafs(\mu)$ SM-like, and the $\theta$-sensitivity \eqref{eq:theta-variation} connects directly to APM’s $(\Au,\kC)$ normalization at $\mu_{0}=\Fq$.
+
+% -------------------------
+\section{Anomaly Cancellation}\label{sec:anomalies}
+
+\begin{definition}
+We assign a family-universal APM charge
+\begin{equation}
+Q_{\mathrm{APM}}=a\,Y+b\,(B\!-\!L),
+\label{eq:QAPM-def}
+\end{equation}
+with $Y$ the hypercharge embedding $Y=\eta_{es}Q_{es}+\eta_{mag}Q_{mag}$ and $B\!-\!L$ the baryon–minus–lepton number. Right-handed neutrinos $\nu_R$ are included per family so that $B\!-\!L$ is well-defined and anomaly-free.
+\end{definition}
+
+\subsection{Linear structure of gauge anomalies}
+For any chiral set of fermions, the one-loop gauge anomalies are linear in the $U(1)$ charge used in the mixed triangles and cubic in that charge for the pure abelian triangle. Therefore, with \eqref{eq:QAPM-def},
+\[
+\mathcal{A}[G^{2}\!-\!U(1)_{\mathrm{APM}}]
+= a\,\mathcal{A}[G^{2}\!-\!U(1)_{Y}]
++ b\,\mathcal{A}[G^{2}\!-\!U(1)_{B\!-\!L}],
+\]
+and
+\[
+\mathcal{A}[U(1)_{\mathrm{APM}}^{3}]
+= a^{3}\,\mathcal{A}[U(1)_{Y}^{3}]
++ 3a^{2}b\,\mathcal{A}[U(1)_{Y}^{2}\!-\!(B\!-\!L)]
++ 3ab^{2}\,\mathcal{A}[Y\!-\!(B\!-\!L)^{2}]
++ b^{3}\,\mathcal{A}[(B\!-\!L)^{3}],
+\]
+with an analogous linear structure for the gravitational mixed anomaly.
+
+\subsection{SM + \texorpdfstring{$\nu_R$}{nuR} anomaly facts (per family)}
+With three colors and one Higgs doublet, the following hold per family:
+\begin{align}
+\mathcal{A}[SU(3)_{c}^{2}\!-\!U(1)_{Y}]&=0, &
+\mathcal{A}[SU(2)_{L}^{2}\!-\!U(1)_{Y}]&=0, \\
+\mathcal{A}[U(1)_{Y}^{3}]&=0, &
+\mathcal{A}[\mathrm{Grav}^{2}\!-\!U(1)_{Y}]&=0,
+\end{align}
+and, when $\nu_R$ is present,
+\begin{align}
+\mathcal{A}[SU(3)_{c}^{2}\!-\!U(1)_{B\!-\!L}]&=0, &
+\mathcal{A}[SU(2)_{L}^{2}\!-\!U(1)_{B\!-\!L}]&=0, \\
+\mathcal{A}[(B\!-\!L)^{3}]&=0, &
+\mathcal{A}[\mathrm{Grav}^{2}\!-\!U(1)_{B\!-\!L}]&=0.
+\end{align}
+Mixed $Y$–$(B\!-\!L)$ triangles also cancel per family. Hence \emph{any} linear combination $aY+b(B\!-\!L)$ is anomaly-free.
+
+\begin{theorem}[Anomaly-free APM embeddings]\label{thm:anomalyfree}
+For family-universal charges with $\nu_R$ included, the $U(1)_{\mathrm{APM}}$ defined in \eqref{eq:QAPM-def} is anomaly-free for all real $a,b$. The QMU stiffness ratio $\Au/\kC=16\pi^{2}$ fixes the overall normalization of the $Y$ leg through the kinetic projector,
+\begin{equation}
+g_{Y}^{-2}=\frac{\cos^{2}\theta}{g_{es}^{2}}+\frac{\sin^{2}\theta}{g_{mag}^{2}}
+=\frac{\cos^{2}\theta}{\kC}+\frac{\sin^{2}\theta}{\Au},
+\end{equation}
+while $b$ controls the relative $(B\!-\!L)$ weight of the gauged current, to be constrained phenomenologically.
+\end{theorem}
+
+\subsection{Dictionary: \texorpdfstring{$(a,b)$}{ab} vs.\ \texorpdfstring{$(\eta_{es},\eta_{mag},\theta)$}{charges}}
+The abelian field rotation \eqref{eq:APMmixer} implies
+\[
+\begin{pmatrix} B_\mu \\ X_\mu \end{pmatrix}
+=
+\begin{pmatrix}
+\cos\theta & \sin\theta\\
+-\sin\theta & \cos\theta
+\end{pmatrix}
+\begin{pmatrix} A^{es}_\mu \\ A^{mag}_\mu \end{pmatrix},
+\qquad
+Y=\eta_{es}Q_{es}+\eta_{mag}Q_{mag}.
+\]
+If the gauged direction is $Q_{\mathrm{APM}}$ in \eqref{eq:QAPM-def} then its projection onto the APM charge basis is
+\begin{equation}
+Q_{\mathrm{APM}}
+= a(\eta_{es}Q_{es}+\eta_{mag}Q_{mag})
++ b\,(B\!-\!L),
+\end{equation}
+so the piece aligned with the APM dual charges has coefficients $(a\,\eta_{es},a\,\eta_{mag})$, while the $(B\!-\!L)$ component is independent of $(\eta_{es},\eta_{mag})$ and couples either via the orthogonal $X$ admixture or via explicit $(B\!-\!L)$ assignments in the portal spectrum. The stiffness normalization $\Au/\kC$ fixes the absolute scale seen by the $Y$ projector; $b$ remains a genuine model parameter to be fit with the QMU observables in Sec.~\ref{sec:obs}.
+
+\begin{lemma}[Redundancy of the overall $Y$ coefficient at $\mu_{0}=\Fq$]
+\label{lem:a-absorption}
+Let $Q_{\mathrm{APM}}=a\,Y+b\,(B\!-\!L)$ with family-universal charges and $\nu_R$ present.
+At the matching scale $\mu_{0}=\Fq$, rescaling $Y\to a\,Y$ and $g_Y\to g_Y/a$ leaves all gauge interactions invariant, so the overall coefficient $a$ can be absorbed into the hypercharge normalization. With the QMU stiffness projector
+\[
+g_{Y}^{-2}=\frac{\cos^{2}\theta}{\kC}+\frac{\sin^{2}\theta}{\Au},
+\]
+this amounts to redefining $b\mapsto b/a$ and setting $a=1$ without loss of generality. Hence only the ratio $b/a$ is physically meaningful once the QMU stiffness ratio $\Au/\kC=16\pi^{2}$ fixes the absolute $Y$ normalization.
+\end{lemma}
+
+\begin{proof}
+Gauge interactions enter as $g_Y\,Y\,B_\mu J^\mu$. The map $Y\to a\,Y$ and $g_Y\to g_Y/a$ leaves $g_Y Y$ unchanged. Since $g_Y$ at $\mu_{0}$ is fixed by the QMU projector (independent of $a$), the redefinition can instead be absorbed into $b\to b/a$ in $Q_{\mathrm{APM}}$. All anomalies remain zero because linear combinations of anomaly-free currents stay anomaly-free. 
+\end{proof}
+
+% -------------------------
+\section{Yukawas, Neutrinos, and SMEFT}\label{sec:smeft}
+
+\subsection{Chronovibrational spurion and operators}
+We treat $X$ as an effective QMU–neutral spurion field that parameterizes chronovibrational effects; its microscopic realization is not required here, just as the threshold parameters $\Delta_{i}^{\rm(th)}$ and running shifts $\delta b_{i}$ encode the net effect of heavy loxodromic portal sectors.
+
+Chronovibrational spurion $X$ (QMU-neutral) induces
+\begin{align}
+\mathcal{L}_{\rm SMEFT}\supset&
+\frac{c_{\ell H}}{\Lambda^{2}}(\bar \ell H)\tilde H^\dagger \nu_{R}
++\frac{c_{H\Box}}{\Lambda^{2}}(H^\dagger H)\Box(H^\dagger H)
++\frac{c_{HD}}{\Lambda^{2}}(H^\dagger D_\mu H)(H^\dagger D^\mu H)\nonumber\\
+&+\sum_{f}\frac{c_{f\gamma}}{\Lambda^{2}}\,\bar f \sigma^{\mu\nu} f\,F_{\mu\nu}
++\cdots,
+\end{align}
+with $c\sim \kappa$ and holonomy-weighted integrals.
+
+% -------------------------
+\section{Observables and Fit Scaffold}\label{sec:obs}
+Predictions for $(g-2)_{e,\mu}$, running $\alpha(Q^2)$, EW precision $(S,T,U)$, rare dipoles.
+
+\begin{figure}[t]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[
+  node distance=8mm and 14mm,
+  box/.style={
+    rectangle, rounded corners, draw, align=center, inner sep=4pt,
+    minimum width=32mm
+  },
+  arr/.style={-{Latex[length=3mm]}},
+  small/.style={font=\footnotesize}
+]
+% Nodes (use QMU macros explicitly)
+\node[box] (apm) {APM dual\\[2pt]$U(1)_{es}\times U(1)_{mag}$\\[1pt]\small $g_{es}^{2}=\kC,\quad g_{mag}^{2}=\Au$};
+
+\node[box, right=of apm] (mix) {APM rotation\\[2pt]$\theta$\\[1pt]\small $B_\mu=\cos\theta\,A^{es}_\mu+\sin\theta\,A^{mag}_\mu$};
+
+\node[box, right=of mix] (yxb) {UV basis\\[2pt]$Y,\ X$\\[1pt]\small $g_Y^{-2}=\dfrac{\cos^{2}\theta}{\kC}+\dfrac{\sin^{2}\theta}{\Au}$};
+
+\node[box, right=of yxb] (ewsb) {EWSB\\[2pt]$\theta_W$\\[1pt]\small $(A_\mu,Z_\mu)$ from $(B_\mu,W^{3}_\mu)$};
+
+\node[box, below=of yxb] (th) {Thresholds\\[2pt]\small $\Delta_i^{\rm(th)}$\\[1pt]\small loxodromic portals};
+
+\node[box, right=26mm of ewsb] (obs) {Observables\\[2pt]\small $\alphafs(\mu)$,\ $\sin^{2}\theta_W(\mu)$,\\[-1pt]\small dipoles,\ $(S,T,U)$};
+
+\node[box, below=of ewsb] (rge) {Running (QMU)\\[2pt]\small $\dfrac{d}{dt}\!\Big(\dfrac{1}{g_i^{2}}\Big)= -\dfrac{b_i+\delta b_i}{8\pi^{2}}$\\[-1pt]\small optional $\varepsilon(t)$};
+
+% Arrows
+\draw[arr] (apm) -- (mix);
+\draw[arr] (mix) -- (yxb);
+\draw[arr] (yxb) -- (ewsb);
+\draw[arr] (ewsb) -- (obs);
+\draw[arr] (th) -- (yxb);
+\draw[arr] (th) -- (rge);
+\draw[arr] (yxb) -- (rge);
+\draw[arr] (rge) -| (obs);
+
+% Ledger note (macros)
+\node[small, below=3mm of th] (note) {$\Au\,\curlapm=\Fq^{2}\lC^{2}$ (ledger anchor)};
+
+\end{tikzpicture}%
+}
+\caption{QMU pipeline: APM dual abelian sector $\to$ hypercharge projection ($\theta$) $\to$ EWSB ($\theta_W$), with thresholds and one-loop QMU running feeding the observable layer. Labels use the QMU base macros $\Fq,\ \lC,\ \Au,\ \curlapm$.}
+\end{figure}
+
+\subsection*{Dipole moments \texorpdfstring{$(g-2)_{f}$}{}}
+A Dirac fermion $f$ receives a one-loop dipole correction when portal fields carry abelian charges $(q_{Y},q_{X})$ that project into the photon through the APM angle~$\theta$. Integrating out a single portal multiplet $\Xi$ of mass $M_{\Xi}$ yields, in the heavy-mass limit,
+\begin{equation}
+\Delta a_{f}
+=
+\frac{m_{f}^{2}}{8\pi^{2}M_{\Xi}^{2}}\,
+\Big(q_{Y}(\Xi)\cos\theta + q_{X}(\Xi)\sin\theta\Big)^{2}
+\,\mathcal{F}_{\rm spin}\!\left(\frac{M_{\Xi}}{m_{f}}\right),
+\label{eq:delta-af}
+\end{equation}
+with $\mathcal{F}_{\rm spin}\!\to 1$ for $M_{\Xi}\!\gg\! m_{f}$. Thus in the BM1 benchmark the prediction is controlled solely by the already-defined abelian charges and the mixing angle,
+\begin{equation}
+\Delta a_{f}^{\rm (BM1)}
+\propto
+\big(q_{Y}\cos\theta + q_{X}\sin\theta\big)^{2},
+\label{eq:BM1-gminus2}
+\end{equation}
+the same rotated-charge combination that appears in the photon projector and respects the QMU stiffness normalization. This structure is consistent with the QMU derivation of the electron magnetic moment in~\cite{Thomson_electron_gfactor}.
+
+% -------------------------
+\section*{Acknowledgments}
+The Quantum AetherDynamics Institute (QADI) is a private 501(c)(3) research institute developing the
+Aether Physics Model (APM) and Quantum Measurement Units (QMU). Publications and data are archived with
+DOIs in the AetherPhysics Zenodo community: \href{https://zenodo.org/communities/aetherphysics}{zenodo.org/communities/aetherphysics}.
+
+% -------------------------
+\appendix
+\section{Diagonalizing abelian kinetic mixing at \texorpdfstring{$\mathcal{O}(\varepsilon)$}{0}}
+\label{app:kinmix}
+
+Starting from the abelian kinetic terms with mixing,
+\begin{equation}
+\mathcal{L}_{\rm kin}^{(Y,X)}
+= -\frac{1}{4} F_{Y}^{\mu\nu}F^{Y}_{\mu\nu}
+  -\frac{1}{4} F_{X}^{\mu\nu}F^{X}_{\mu\nu}
+  -\frac{\varepsilon}{2} F_{Y}^{\mu\nu}F^{X}_{\mu\nu},
+\qquad
+|\varepsilon|\ll 1,
+\end{equation}
+and interaction terms
+\begin{equation}
+\mathcal{L}_{\rm int}^{(Y,X)}
+= g_{Y}\,B_{\mu}\,J_{Y}^{\mu}+g_{X}\,X_{\mu}\,J_{X}^{\mu},
+\end{equation}
+one can remove the kinetic mixing at $\mathcal{O}(\varepsilon)$ by the field redefinition
+\begin{equation}
+B_{\mu} = B'_{\mu} + \varepsilon\, X'_{\mu},
+\qquad
+X_{\mu} = X'_{\mu}.
+\label{eq:KMshift}
+\end{equation}
+To first order in $\varepsilon$ the kinetic terms become canonical,
+\(
+\mathcal{L}_{\rm kin}^{(Y,X)} =
+-\tfrac14 F_{B'}^{2}-\tfrac14 F_{X'}^{2}+\mathcal{O}(\varepsilon^{2}),
+\)
+while the interactions transform to
+\begin{equation}
+\mathcal{L}_{\rm int}^{(Y,X)}
+= g_{Y}\,B'_{\mu}\,J_{Y}^{\mu}
++ g_{X}\,X'_{\mu}\Big(J_{X}^{\mu}-\varepsilon\,\frac{g_{Y}}{g_{X}}\,J_{Y}^{\mu}\Big)
++\mathcal{O}(\varepsilon^{2}).
+\label{eq:KMinteractions}
+\end{equation}
+Thus, after diagonalization the $X'$ boson acquires a suppressed coupling to the hypercharge current $J_{Y}$ proportional to $\varepsilon\,g_{Y}$, while $B'$ keeps its original coupling at $\mathcal{O}(\varepsilon)$.
+
+When evolved with the matrix RGE~\eqref{eq:RGE-matrix}, the mixing parameter generated by portals is
+\(
+\varepsilon(\mu) = -\delta b_{YX}\,t/(8\pi^{2})+\mathcal{O}(\delta b_{YX}^{2}),
+\)
+with $t=\ln(\mu/\mu_{0})$. Combining \eqref{eq:KMshift}–\eqref{eq:KMinteractions} with the electroweak rotation then shows that the photon coupling $g_{\gamma}$ is unchanged at $\mathcal{O}(\varepsilon)$, while $Z$- and $X$-sector couplings receive controlled, model-dependent admixtures. These effects are automatically captured by using the inverse-coupling matrix evolution in the main text.
+
+% ---------- References ----------
+\bibliographystyle{unsrtnat}
+\bibliography{qadi_refs}
+
+\end{document}
